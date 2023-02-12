@@ -1,4 +1,4 @@
-from tussik-zpl import ZplWriter
+from tussik.zpl import ZplWriter
 
 zpl = ZplWriter()
 zpl.font(8)

@@ -12,7 +12,7 @@ try:
 except:
     Image = None
     ImageOps = None
-from src.zplconfig import ZplConfig
+from .zplconfig import ZplConfig
 
 logger = logging.getLogger()
 
@@ -198,14 +198,16 @@ class ZplWriter:
             logger.exception("failed to load image")
             return False
 
-    def qrcode(self, left: int = 0, top: int = 0, data: Union[str, dict, list, None] = None,
+    def qrcode(self, left: int = 0, top: int = 0, data: Union[str, dict, list, int, float, None] = None,
                magnify: Optional[int] = None) -> None:
         if data is None:
             return
         elif isinstance(data, str):
             content = data
+        elif isinstance(data, (int, float)):
+            content = str(data)
         else:
-            content = json.dumps(data, indent=4)
+            content = json.dumps(data)
         if magnify is None:
             magnify = ''
         left, top = self.coordinates(left, top)

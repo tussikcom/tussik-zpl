@@ -1,4 +1,4 @@
-from src.zplwriter import ZplWriter
+from tussik.zpl import ZplWriter
 
 
 class TestWriter:
